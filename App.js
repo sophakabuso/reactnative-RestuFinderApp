@@ -1,43 +1,35 @@
 
 
-const Stack = createNativeStackNavigator();
-import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { useFonts } from "expo-font";
-import Login from "./screens/Login";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
+import RestaurantScreen from './screens/RestaurantScreen';
+import MenuScreen from './screens/MenuScreen';
+import ReservationScreen from './screens/ReservationScreen';
+import ConfirmationScreen from './screens/ConfirmationScreen';
+import HistoryScreen from './screens/HistoryScreen';
+import ProfileScreen from './screens/ProfileScreen';
+
+const Stack = createStackNavigator();
 
 const App = () => {
-  const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
-
-  const [fontsLoaded, error] = useFonts({
-    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
-    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
-    "Roboto-Black": require("./assets/fonts/Roboto-Black.ttf"),
-    "Roboto-MediumItalic": require("./assets/fonts/Roboto-MediumItalic.ttf"),
-    "Inter-Regular": require("./assets/fonts/Inter-Regular.ttf"),
-  });
-
-  if (!fontsLoaded && !error) {
-    return null;
-  }
-
-  return (
-    <>
-      <NavigationContainer>
-        {hideSplashScreen ? (
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        ) : null}
-      </NavigationContainer>
-    </>
-  );
+    return (
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Login">
+                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Restaurant" component={RestaurantScreen} />
+                <Stack.Screen name="Menu" component={MenuScreen} />
+                <Stack.Screen name="Reservation" component={ReservationScreen} />
+                <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
+                <Stack.Screen name="History" component={HistoryScreen} />
+                <Stack.Screen name="Profile" component={ProfileScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
 };
+
 export default App;
