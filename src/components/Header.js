@@ -1,70 +1,63 @@
 
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { Button, TextInput, View, StyleSheet, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Header from './Header'; // Make sure the path is correct
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import NetInfo from "@react-native-community/netinfo";
+import * as Battery from 'expo-battery';
 
-const LoginScreen = () => {
-    const { register, handleSubmit, setValue } = useForm();
-    const navigation = useNavigation();
+const Header = () => {
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
+    const [batteryLevel, setBatteryLevel] = useState(null);
+    const [wifi, setWifi] = useState(null);
+    const [network, setNetwork] = useState(null);
 
-    React.useEffect(() => {
-        register('username');
-        register('cellNumber');
-    }, [register]);
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setTime(new Date().toLocaleTimeString());
+        }, 1000);
 
-    const onSubmit = data => {
-        // Send OTP here...
-        // Then navigate to OTP verification screen
-        navigation.navigate('OTPVerification');
-    };
+        const fetchBatteryLevel = async () => {
+            try {
+                const batteryLevel = await Battery.getBatteryLevelAsync();
+                setBatteryLevel(batteryLevel);
+            } catch (error) {
+                console.error('Failed to fetch battery level:', error);
+            }
+        };
+
+        fetchBatteryLevel();
+
+        NetInfo.fetch().then(state => {
+            setWifi(state.type === 'wifi');
+            setNetwork(state.type);
+        });
+
+        return () => clearInterval(intervalId);
+    }, []);
 
     return (
-        <ImageBackground
-            source={require('../assets/images/background.jpg')}
-            style={styles.backgroundImage}
-        >
-            <Header /> {/* Include the Header component here */}
-            <View style={styles.container}>
-                <TextInput
-                    onChangeText={text => setValue('username', text)}
-                    placeholder="Username"
-                    style={styles.input}
-                />
-                <TextInput
-                    onChangeText={text => setValue('cellNumber', text)}
-                    placeholder="Cell Number"
-                    keyboardType="phone-pad"
-                    style={styles.input}
-                />
-                <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-            </View>
-        </ImageBackground>
+        <View style={styles.container}>
+            <Text style={styles.text}>{time}</Text>
+            <Text style={styles.text}>{`Battery: ${Math.floor(batteryLevel * 100)}%`}</Text>
+            <Text style={styles.text}>{`Wifi: ${wifi ? 'On' : 'Off'}`}</Text>
+            <Text style={styles.text}>{`Network: ${network}`}</Text>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    backgroundImage: {
-        flex: 1,
-        resizeMode: 'cover',
-        justifyContent: 'center',
-    },
     container: {
-        flex: 1,
-        justifyContent: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 20,
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 4,
-        padding: 10,
-        marginBottom: 10,
-        width: '100%',
         backgroundColor: '#fff',
+        padding: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
+    },
+    text: {
+        fontSize: 16,
+        fontWeight: 'bold',
     },
 });
 
-export default LoginScreen;
+export default Header;
