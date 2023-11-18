@@ -1,49 +1,37 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchRestaurants } from '../state/actions';
+// User Actions
+export const SET_USER = 'SET_USER';
+export const CLEAR_USER = 'CLEAR_USER';
 
-class RestaurantList extends React.Component {
-    componentDidMount() {
-        // Dispatch an action to fetch the restaurants
-        this.props.fetchRestaurants();
-    }
+// Restaurant Actions
+export const SET_RESTAURANTS = 'SET_RESTAURANTS';
 
-    render() {
-        const { restaurants, loading, error } = this.props;
+// Selected Restaurant Actions
+export const SET_SELECTED_RESTAURANT = 'SET_SELECTED_RESTAURANT';
 
-        if (loading) {
-            return <div>Loading...</div>;
-        }
+// Menu Actions
+export const SET_MENU = 'SET_MENU';
 
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        }
+// Reservation Actions
+export const SET_RESERVATION = 'SET_RESERVATION';
 
-        return (
-            <div>
-                <h1>Restaurant List</h1>
-                <ul>
-                    {restaurants.map((restaurant) => (
-                        <li key={restaurant.id}>{restaurant.name}</li>
-                    ))}
-                </ul>
-            </div>
-        );
-    }
-}
+// History Actions
+export const SET_HISTORY = 'SET_HISTORY';
 
-const mapStateToProps = (state) => {
-    return {
-        restaurants: state.restaurants,
-        loading: state.loading,
-        error: state.error,
-    };
-};
+// Profile Actions
+export const SET_PROFILE = 'SET_PROFILE';
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchRestaurants: () => dispatch(fetchRestaurants()),
-    };
-};
+// Action creators
+export const setUser = user => ({ type: SET_USER, payload: user });
+export const clearUser = () => ({ type: CLEAR_USER });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantList);
+export const setRestaurants = restaurants => ({ type: SET_RESTAURANTS, payload: restaurants });
+
+export const setSelectedRestaurant = restaurant => ({ type: SET_SELECTED_RESTAURANT, payload: restaurant });
+
+export const setMenu = menu => ({ type: SET_MENU, payload: menu });
+
+export const setReservation = reservation => ({ type: SET_RESERVATION, payload: reservation });
+
+export const setHistory = history => ({ type: SET_HISTORY, payload: history });
+
+export const setProfile = profile => ({ type: SET_PROFILE, payload: profile });
