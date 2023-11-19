@@ -28,7 +28,7 @@ const LoginScreen = ({naavigation}) => {
 
     return (
         <ImageBackground
-            source={require('../assets/images/background.jpg')}
+            source={require('../../assets/images/background.jpg')}
             style={styles.backgroundImage}
         >
             <Header /> {/* Include the Header component here */}
