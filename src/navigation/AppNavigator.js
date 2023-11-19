@@ -3,7 +3,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import LoginScreen from '../screens/LoginScreen';
+import LoginScreen from '../screens/Auth/LoginScreen';
 import HomeScreen from '../screens/HomeScreen';
 import RestaurantScreen from '../screens/RestaurantScreen';
 import MenuScreen from '../screens/MenuScreen';

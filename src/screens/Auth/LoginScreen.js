@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, TextInput, View, StyleSheet, ImageBackground } from 'react-native';
+import { Button, TextInput, View, StyleSheet, ImageBackground, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Header from '../components/Header'; // Make sure the path is correct
+import Header from '../../components/Header'; // Make sure the path is correct
 
-const LoginScreen = () => {
+const LoginScreen = ({naavigation}) => {
     const { register, handleSubmit, setValue } = useForm();
     const navigation = useNavigation();
 
@@ -17,6 +17,13 @@ const LoginScreen = () => {
         // Send OTP here...
         // Then navigate to OTP verification screen
         navigation.navigate('OTPVerification');
+
+        // Navigate to the home page
+        navigation.navigate('Home');
+    };
+
+    const navigateToHome = () => {
+        navigation.navigate('Home');
     };
 
     return (
@@ -38,6 +45,9 @@ const LoginScreen = () => {
                     style={styles.input}
                 />
                 <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+                <TouchableOpacity onPress={navigateToHome} style={styles.button}>
+                    <Text style={styles.buttonText}>Go to Home</Text>
+                </TouchableOpacity>
             </View>
         </ImageBackground>
     );
@@ -64,8 +74,16 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#fff',
     },
+    button: {
+        backgroundColor: '#007bff',
+        padding: 10,
+        borderRadius: 4,
+        marginTop: 10,
+    },
+    buttonText: {
+        color: '#fff',
+        textAlign: 'center',
+    },
 });
 
 export default LoginScreen;
-
-  
