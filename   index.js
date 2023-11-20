@@ -1,7 +1,12 @@
-// Import necessary modules
 import React from 'react';
-import { AppRegistry } from 'react-native';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './App';
+import store from './store'; // Import the store
 
-// Register the app component
-AppRegistry.registerComponent('restuFinderApp', () => App);
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+);

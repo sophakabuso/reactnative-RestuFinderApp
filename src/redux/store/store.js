@@ -1,35 +1,7 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { createStore } from 'redux';
+import appReducer from '../reducers/reducers'; // Import your root reducer
 
-class DetailedComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            // Initialize state if needed
-        };
-    }
+// Create the Redux store
+const store = createStore(appReducer);
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text style={styles.title}>Detailed Component</Text>
-                {/* Add your detailed information here */}
-            </View>
-        );
-    }
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 16,
-    },
-});
-
-export default DetailedComponent;
+export default store;
