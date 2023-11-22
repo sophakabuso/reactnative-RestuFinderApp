@@ -28,33 +28,35 @@ const LoginScreen = ({naavigation}) => {
     };
 
     return (
-        <ImageBackground
-            source={require('../../assets/images/background.jpg')}
-            style={styles.backgroundImage}
-        >
-            <Header /> {/* Include the Header component here */}
-            <View style={styles.container}>
-                <HeaderBackButton onPress={() => navigation.goBack()} /> {/* Add this line */}
-                {/* Rest of your Header component */}
-            </View>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    onChangeText={text => setValue('username', text)}
-                    placeholder="Username"
-                    style={styles.input}
-                />
-                <TextInput
-                    onChangeText={text => setValue('cellNumber', text)}
-                    placeholder="Cell Number"
-                    keyboardType="phone-pad"
-                    style={styles.input}
-                />
-                <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-                <TouchableOpacity onPress={navigateToHome} style={styles.button}>
-                    <Text style={styles.buttonText}>Go to Home</Text>
-                </TouchableOpacity>
-            </View>
-        </ImageBackground>
+        <View style={styles.container}>
+            <ImageBackground
+                source={require('../../assets/images/background.jpg')}
+                style={styles.backgroundImage}
+            >
+                <Header /> {/* Include the Header component here */}
+                <View style={styles.innerContainer}>
+                    <HeaderBackButton onPress={() => navigation.goBack()} /> {/* Add this line */}
+                    {/* Rest of your Header component */}
+                </View>
+                <View style={styles.innerContainer}>
+                    <TextInput
+                        onChangeText={text => setValue('username', text)}
+                        placeholder="Username"
+                        style={styles.input}
+                    />
+                    <TextInput
+                        onChangeText={text => setValue('cellNumber', text)}
+                        placeholder="Cell Number"
+                        keyboardType="phone-pad"
+                        style={styles.input}
+                    />
+                    <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+                    <TouchableOpacity onPress={navigateToHome} style={styles.button}>
+                        <Text style={styles.buttonText}>Go to Home</Text>
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
+        </View>
     );
 };
 
