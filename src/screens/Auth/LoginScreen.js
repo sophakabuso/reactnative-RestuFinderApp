@@ -34,11 +34,30 @@ const LoginScreen = ({naavigation}) => {
                     source={require('../../assets/images/background.jpg')}
                     style={styles.backgroundImage}
                 >
-                    <Header /> {/* Include the Header component here */}
+                    <view style={styles.topnavContainer}>
+                    <Header/> {/* Include the Header component here */}
                     <HeaderBackButton onPress={() => navigation.goBack()} /> {/* Add this line */}
                     {/* Rest of your Header component */}
+                    </view>
+                    <view >
+                      <Text>
+                           SoB
+                      </Text>
+                      <text>
+                            Restuarant
+                      </text>
+                    </view>
+                    <view >
+                      <Text>
+                           Welcome back 
+                      </Text>
+                      <text>
+                           get started
+                      </text>
+                    </view>
                 </ImageBackground>
             </View>
+
             <View style={styles.innerContainer}>
                 <TextInput
                     onChangeText={text => setValue('username', text)}
@@ -84,6 +103,23 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         height: 350,
+        justifyContent: 'flex-start' 
+    },
+    topnavContainer: {
+        width: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        height: 350,
+        justifyContent: 'flex-start' 
+    },
+    innerContainer:
+     {
+        width: '100%',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        height: 150,
         justifyContent: 'flex-start' 
     },
     input: {
