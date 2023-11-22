@@ -2,7 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, TextInput, View, StyleSheet, ImageBackground, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Header from '../../components/Header'; // Make sure the path is correct
+import Header from '../../components/Header';
+import { HeaderBackButton } from '@react-navigation/elements';
 
 const LoginScreen = ({naavigation}) => {
     const { register, handleSubmit, setValue } = useForm();
@@ -33,6 +34,10 @@ const LoginScreen = ({naavigation}) => {
         >
             <Header /> {/* Include the Header component here */}
             <View style={styles.container}>
+                <HeaderBackButton onPress={() => navigation.goBack()} /> {/* Add this line */}
+                {/* Rest of your Header component */}
+            </View>
+            <View style={styles.inputContainer}>
                 <TextInput
                     onChangeText={text => setValue('username', text)}
                     placeholder="Username"
