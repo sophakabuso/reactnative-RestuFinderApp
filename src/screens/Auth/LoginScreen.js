@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import Header from '../../components/Header';
 import { HeaderBackButton } from '@react-navigation/elements';
 
-const LoginScreen = ({naavigation}) => {
+const LoginScreen = () => {
     const { register, handleSubmit, setValue } = useForm();
     const navigation = useNavigation();
 
@@ -34,27 +34,28 @@ const LoginScreen = ({naavigation}) => {
                     source={require('../../assets/images/background.jpg')}
                     style={styles.backgroundImage}
                 >
-                    <view style={styles.topnavContainer}>
-                    <Header/> {/* Include the Header component here */}
-                    <HeaderBackButton onPress={() => navigation.goBack()} /> {/* Add this line */}
-                    {/* Rest of your Header component */}
-                    </view>
-                    <view >
-                      <Text>
-                           SoB
-                      </Text>
-                      <text>
-                            Restuarant
-                      </text>
-                    </view>
-                    <view >
-                      <Text>
-                           Welcome back 
-                      </Text>
-                      <text>
-                           get started
-                      </text>
-                    </view>
+                    <View style={styles.topnavContainer}>
+                        <Header /> {/* Include the Header component here */}
+                        <HeaderBackButton onPress={() => navigation.goBack()} /> {/* Add this line */}
+                        {/* Rest of your Header component */}
+                    </View>
+                    <View style={styles.logowelcomeContainer}>
+                        <View>
+                            <Text style={styles.sob}>SoB</Text>
+                        </View>
+                        <View>
+                            <Text style={styles.restu}> Restaurant </Text>
+                        </View>
+                        <View>
+                            <Text style={styles.welcomeback}>Welcome back </Text>
+                        </View>
+                        <View>
+                            <Text style={styles.getstarted}>get started</Text>
+                        </View>
+                        <View>
+                            <Text> styl</Text>
+                        </View>
+                    </View>
                 </ImageBackground>
             </View>
 
@@ -89,7 +90,6 @@ const styles = StyleSheet.create({
         left: 0,
         bottom: 0,
         right: 0,
-       
     },
     container: {
         flex: 1,
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         height: 350,
-        justifyContent: 'flex-start' 
+        justifyContent: 'flex-start'
     },
     topnavContainer: {
         width: '100%',
@@ -111,16 +111,15 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         height: 350,
-        justifyContent: 'flex-start' 
+        justifyContent: 'flex-start'
     },
-    innerContainer:
-     {
+    innerContainer: {
         width: '100%',
         position: 'absolute',
         bottom: 0,
         left: 0,
         height: 150,
-        justifyContent: 'flex-start' 
+        justifyContent: 'flex-start'
     },
     input: {
         borderWidth: 1,
