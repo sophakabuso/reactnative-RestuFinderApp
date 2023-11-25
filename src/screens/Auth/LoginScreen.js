@@ -4,6 +4,8 @@ import { Button, TextInput, View, StyleSheet, ImageBackground, TouchableOpacity,
 import { useNavigation } from '@react-navigation/native';
 import Header from '../../components/Header';
 import { HeaderBackButton } from '@react-navigation/elements';
+import { Image } from 'react-native';
+
 
 const LoginScreen = () => {
     const { register, handleSubmit, setValue } = useForm();
@@ -53,7 +55,14 @@ const LoginScreen = () => {
                             <Text style={styles.getstarted}>get started</Text>
                         </View>
                         <View>
-                            <Text> styl</Text>
+                            <Image
+                             source={require('../../assets/images/decobarsmall.jpg')}
+                              style={styles.decobar}
+                             />
+                        </View>
+
+                        <View>
+                            
                         </View>
                     </View>
                 </ImageBackground>
