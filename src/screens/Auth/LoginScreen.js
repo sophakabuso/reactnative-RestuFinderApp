@@ -69,18 +69,23 @@ const LoginScreen = () => {
             </View>
 
             <View style={styles.innerContainer}>
+            <Button title="Login" onPress={handleSubmit(onSubmit)} />
+            <Text>
+                With your cell number and password
+            </Text>
                 <TextInput
-                    onChangeText={text => setValue('username', text)}
-                    placeholder="Username"
+                onChangeText={text => setValue('+27XX XXX XXXX', text)}
+                    placeholder="+27XX XXX XXXX"
                     style={styles.input}
+                   
                 />
                 <TextInput
-                    onChangeText={text => setValue('cellNumber', text)}
-                    placeholder="Cell Number"
+                    onChangeText={text => setValue('password', text)}
+                    placeholder="Password"
                     keyboardType="phone-pad"
                     style={styles.input}
                 />
-                <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+                <Button title="Login" onPress={handleSubmit(onSubmit)} />
                 <TouchableOpacity onPress={navigateToHome} style={styles.button}>
                     <Text style={styles.buttonText}>Go to Home</Text>
                 </TouchableOpacity>
