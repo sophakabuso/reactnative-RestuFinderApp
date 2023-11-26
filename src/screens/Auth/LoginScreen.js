@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import Header from '../../components/Header';
 import { HeaderBackButton } from '@react-navigation/elements';
 import { Image } from 'react-native';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const LoginScreen = () => {
     const { register, handleSubmit, setValue } = useForm();
@@ -22,7 +22,36 @@ const LoginScreen = () => {
         navigation.navigate('OTPVerification');
 
         // Navigate to the home page
-        navigation.navigate('Home');
+        // Commenting this out as navigating twice might not be the intended behavior
+        // navigation.navigate('Home');
+    };
+
+    const SocialLinks = () => {
+        const openLinkedin = () => {
+            // Handle LinkedIn link
+        };
+
+        const openTwitter = () => {
+            // Handle Twitter link
+        };
+
+        const openInstagram = () => {
+            // Handle Instagram link
+        };
+
+        return (
+            <View style={styles.socialLinksContainer}>
+           <TouchableOpacity onPress={openLinkedin} style={styles.socialButton}>
+                <Icon name="linkedin" size={30} color="#0077b5" />
+               </TouchableOpacity>
+                <TouchableOpacity onPress={openTwitter} style={styles.socialButton}>
+                    <Icon name="times" size={30} color="#1da1f2" />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={openInstagram} style={styles.socialButton}>
+                    <Icon name="instagram" size={30} color="#e4405f" />
+                </TouchableOpacity>
+            </View>
+        );
     };
 
     const navigateToHome = () => {
@@ -37,9 +66,8 @@ const LoginScreen = () => {
                     style={styles.backgroundImage}
                 >
                     <View style={styles.topnavContainer}>
-                        <Header /> {/* Include the Header component here */}
-                        <HeaderBackButton onPress={() => navigation.goBack()} /> {/* Add this line */}
-                        {/* Rest of your Header component */}
+                        <Header />
+                        <HeaderBackButton onPress={() => navigation.goBack()} />
                     </View>
                     <View style={styles.logowelcomeContainer}>
                         <View>
@@ -56,39 +84,44 @@ const LoginScreen = () => {
                         </View>
                         <View>
                             <Image
-                             source={require('../../assets/images/decobarsmall.jpg')}
-                              style={styles.decobar}
-                             />
-                        </View>
-
-                        <View>
-                            
+                                source={require('../../assets/images/decobarsmall.jpg')}
+                                style={styles.decobar}
+                            />
                         </View>
                     </View>
                 </ImageBackground>
             </View>
 
             <View style={styles.innerContainer}>
-            <Button title="Login" onPress={handleSubmit(onSubmit)} />
-            <Text>
-                With your cell number and password
-            </Text>
+                <Text>With your cell number and password</Text>
+                <Button title="Login" onPress={handleSubmit(onSubmit)} />
                 <TextInput
-                onChangeText={text => setValue('+27XX XXX XXXX', text)}
+                    onChangeText={text => setValue('+27XX XXX XXXX', text)}
                     placeholder="+27XX XXX XXXX"
                     style={styles.input}
-                   
                 />
                 <TextInput
                     onChangeText={text => setValue('password', text)}
                     placeholder="Password"
                     keyboardType="phone-pad"
                     style={styles.input}
+                    secureTextEntry={true}  
                 />
-                <Button title="Login" onPress={handleSubmit(onSubmit)} />
-                <TouchableOpacity onPress={navigateToHome} style={styles.button}>
-                    <Text style={styles.buttonText}>Go to Home</Text>
-                </TouchableOpacity>
+                <view>
+                <Image
+                                source={require('../../assets/images/decobarsmall.jpg')}
+                                style={styles.decobar}
+                            />
+                     
+               
+                 <Text>OR LOGIN WITH</Text>
+                 <Image
+                                source={require('../../assets/images/decobarsmall.jpg')}
+                                style={styles.decobar}
+                            />
+                  
+                </view>
+                <SocialLinks />
             </View>
         </View>
     );
@@ -135,10 +168,11 @@ const styles = StyleSheet.create({
         height: 150,
         justifyContent: 'flex-start'
     },
-    decobar:{
+    decobar: {
         width: 33.103,
         height: 7.207,
         flex: 0,
+        color:'red',
     },
     input: {
         borderWidth: 1,
@@ -147,10 +181,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 10,
         width: '100%',
-        backgroundColor:'#D9D9D9',
-      
-       
-
+        backgroundColor: '#D9D9D9',
     },
     button: {
         backgroundColor: '#007bff',
@@ -161,6 +192,14 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#fff',
         textAlign: 'center',
+    },
+    socialLinksContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 20,
+    },
+    socialButton: {
+        padding: 10,
     },
 });
 
