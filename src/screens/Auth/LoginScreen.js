@@ -1,10 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, TextInput, View, StyleSheet, ImageBackground, TouchableOpacity, Text } from 'react-native';
+import { Button, TextInput, View, StyleSheet, ImageBackground, TouchableOpacity, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../../components/Header';
 import { HeaderBackButton } from '@react-navigation/elements';
-import { Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const LoginScreen = () => {
@@ -20,10 +19,6 @@ const LoginScreen = () => {
         // Send OTP here...
         // Then navigate to OTP verification screen
         navigation.navigate('OTPVerification');
-
-        // Navigate to the home page
-        // Commenting this out as navigating twice might not be the intended behavior
-        // navigation.navigate('Home');
     };
 
     const SocialLinks = () => {
@@ -41,9 +36,9 @@ const LoginScreen = () => {
 
         return (
             <View style={styles.socialLinksContainer}>
-           <TouchableOpacity onPress={openLinkedin} style={styles.socialButton}>
-                <Icon name="linkedin" size={30} color="#0077b5" />
-               </TouchableOpacity>
+                <TouchableOpacity onPress={openLinkedin} style={styles.socialButton}>
+                    <Icon name="linkedin" size={30} color="#0077b5" />
+                </TouchableOpacity>
                 <TouchableOpacity onPress={openTwitter} style={styles.socialButton}>
                     <Icon name="times" size={30} color="#1da1f2" />
                 </TouchableOpacity>
@@ -54,10 +49,6 @@ const LoginScreen = () => {
         );
     };
 
-    const navigateToHome = () => {
-        navigation.navigate('Home');
-    };
-
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -65,35 +56,27 @@ const LoginScreen = () => {
                     source={require('../../assets/images/background.jpg')}
                     style={styles.backgroundImage}
                 >
-                    <View style={styles.topnavContainer}>
-                        <Header />
-                        <HeaderBackButton onPress={() => navigation.goBack()} />
-                    </View>
+                    <Header />
+                    <HeaderBackButton onPress={() => navigation.goBack()} />
                     <View style={styles.logowelcomeContainer}>
-                        <View>
+                        <View style={styles.sobrestuContainer}>
                             <Text style={styles.sob}>SoB</Text>
-                        </View>
-                        <View>
                             <Text style={styles.restu}> Restaurant </Text>
                         </View>
-                        <View>
+                        <View style={styles.welcostart}>
                             <Text style={styles.welcomeback}>Welcome back </Text>
-                        </View>
-                        <View>
                             <Text style={styles.getstarted}>get started</Text>
                         </View>
-                        <View>
-                            <Image
-                                source={require('../../assets/images/decobarsmall.jpg')}
-                                style={styles.decobar}
-                            />
-                        </View>
+                        <Image
+                            source={require('../../assets/images/decobarsmall.jpg')}
+                            style={styles.decobar}
+                        />
                     </View>
                 </ImageBackground>
             </View>
 
             <View style={styles.innerContainer}>
-                <Text>With your cell number and password</Text>
+                <Text style={styles.loginText}>With your cell number and password</Text>
                 <Button title="Login" onPress={handleSubmit(onSubmit)} />
                 <TextInput
                     onChangeText={text => setValue('+27XX XXX XXXX', text)}
@@ -105,22 +88,19 @@ const LoginScreen = () => {
                     placeholder="Password"
                     keyboardType="phone-pad"
                     style={styles.input}
-                    secureTextEntry={true}  
+                    secureTextEntry={true}
                 />
-                <view>
-                <Image
-                                source={require('../../assets/images/decobarsmall.jpg')}
-                                style={styles.decobar}
-                            />
-                     
-               
-                 <Text>OR LOGIN WITH</Text>
-                 <Image
-                                source={require('../../assets/images/decobarsmall.jpg')}
-                                style={styles.decobar}
-                            />
-                  
-                </view>
+                <View style={styles.orContainer}>
+                    <Image
+                        source={require('../../assets/images/decobarsmall.jpg')}
+                        style={styles.decobar}
+                    />
+                    <Text style={styles.orText}>OR LOGIN WITH</Text>
+                    <Image
+                        source={require('../../assets/images/decobarsmall.jpg')}
+                        style={styles.decobar}
+                    />
+                </View>
                 <SocialLinks />
             </View>
         </View>
@@ -142,37 +122,29 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
     },
     headerContainer: {
+        flex: 1,
         width: '100%',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        height: 350,
-        justifyContent: 'flex-start'
     },
-    topnavContainer: {
-        width: '100%',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        height: 350,
-        justifyContent: 'flex-start'
+    logowelcomeContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 0,
     },
-    innerContainer: {
+    sobrestuContainer: {
         width: '100%',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        height: 150,
-        justifyContent: 'flex-start'
+        height: 'auto',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingBottom:100,
     },
     decobar: {
         width: 33.103,
         height: 7.207,
-        flex: 0,
-        color:'red',
+        marginBottom: 10,
     },
     input: {
         borderWidth: 1,
@@ -183,16 +155,6 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#D9D9D9',
     },
-    button: {
-        backgroundColor: '#007bff',
-        padding: 10,
-        borderRadius: 4,
-        marginTop: 10,
-    },
-    buttonText: {
-        color: '#fff',
-        textAlign: 'center',
-    },
     socialLinksContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -200,6 +162,82 @@ const styles = StyleSheet.create({
     },
     socialButton: {
         padding: 10,
+    },
+    welcostart: {
+        flexDirection: 'row',
+        paddingtop:10 ,
+        flexDirection: 'column',
+    },
+    welcomeback: {
+        color: '#FFF',
+        textAlign: 'center',
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        fontWeight: '900',
+        lineHeight: 18,
+        letterSpacing: -0.165,
+        marginLeft: 5,
+    },
+    getstarted: {
+        color: '#FFF',
+        textAlign: 'center',
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        fontWeight: '900',
+        lineHeight: 18,
+        letterSpacing: -0.165,
+        marginLeft: 5,
+    },
+    sob: {
+        color: '#FFF',
+        textAlign: 'center',
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        fontWeight: '900',
+        lineHeight: 18,
+        letterSpacing: -0.165,
+        marginLeft: 5,
+    },
+    restu: {
+        color: '#FFF',
+        textAlign: 'center',
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        fontWeight: '900',
+        lineHeight: 18,
+        letterSpacing: -0.165,
+        marginLeft: 5,
+    },
+    innerContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+        width: '100%',
+        backgroundColor:'#0F0101'    },
+    loginText: {
+        color: '#FFF',
+        textAlign: 'center',
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        fontWeight: '900',
+        lineHeight: 18,
+        letterSpacing: -0.165,
+        marginBottom: 10,
+    },
+    orContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginVertical: 10,
+    },
+    orText: {
+        color: '#FFF',
+        marginHorizontal: 10,
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        fontWeight: '900',
+        lineHeight: 18,
+        letterSpacing: -0.165,
     },
 });
 

@@ -4,7 +4,6 @@ import { View, Text, StyleSheet } from 'react-native';
 import NetInfo from "@react-native-community/netinfo";
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 
-
 const Header = () => {
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     const [batteryLevel, setBatteryLevel] = useState(null);
@@ -13,16 +12,18 @@ const Header = () => {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setTime(new Date().toLocaleTimeString());
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            setTime(formattedTime);
         }, 1000);
-
+    
         const fetchBatteryLevel = async () => {
             try {
                 const batteryLevel = await Battery.getBatteryLevelAsync();
                 setBatteryLevel(batteryLevel);
             } catch (error) {
                 console.error('Failed to fetch battery level:', error);
-            }Login 
+            }
         };
 
         fetchBatteryLevel();
@@ -37,18 +38,17 @@ const Header = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>{time}</Text>
+            <Text style={styles.time}>{time}</Text>
             <View style={styles.iconContainer}>
-                <Icon name="battery" size={30} color="#900" /> {/* Use the Icon component */}
-                <Text style={styles.text}>{`Battery: ${Math.floor(batteryLevel * 100)}%`}</Text>
-            </View>
-            <View style={styles.iconContainer}>
-                <Icon name="wifi" size={30} color="#900" /> {/* Use the Icon component */}
-                <Text style={styles.text}>{`Wifi: ${wifi ? 'On' : 'Off'}`}</Text>
-            </View>
-            <View style={styles.iconContainer}>
-                <Icon name="globe" size={30} color="#900" /> {/* Use the Icon component */}
-                <Text style={styles.text}>{`Network: ${network}`}</Text>
+                <View style={styles.iconBattery}>
+                    <Icon name="battery" size={12} color="#900" />
+                </View>
+                <View style={styles.iconWifi}>
+                    <Icon name="wifi" size={12} color="#900" />
+                </View>
+                <View style={styles.iconSignalBars}>
+                    <Icon name="signal-bars" size={12} color="#900" />
+                </View> 
             </View>
         </View>
     );
@@ -64,9 +64,39 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#ddd',
     },
-    text: {
-        fontSize: 16,
-        fontWeight: 'bold',
+    iconContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    iconBattery: {
+        marginRight: 10,
+        backgroundColor: 'transparent', // Add any background color you want
+        padding: 5, // Add padding as needed
+        borderRadius: 5, // Add border radius as needed
+    },
+    iconWifi: {
+        marginRight: 10,
+        backgroundColor: 'transparent',
+        padding: 5,
+        borderRadius: 5,
+        color: '#FFF',
+    },
+    iconSignalBars: {
+        backgroundColor: 'transparent',
+        padding: 5,
+        borderRadius: 5,
+        color:'#FFF',
+    },
+    time: {
+        color: '#FFF',
+        textAlign: 'center',
+        fontFamily: 'Roboto',
+        fontSize: 10,
+        fontStyle: 'normal',
+        fontWeight: '900',
+        lineHeight: 18,
+        letterSpacing: -0.165,
+        marginLeft: 5,
     },
 });
 
