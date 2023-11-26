@@ -135,6 +135,11 @@ const styles = StyleSheet.create({
         height: 150,
         justifyContent: 'flex-start'
     },
+    decobar:{
+        width: 33.103,
+        height: 7.207,
+        flex: 0,
+    },
     input: {
         borderWidth: 1,
         borderColor: '#ccc',
@@ -142,7 +147,10 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 10,
         width: '100%',
-        backgroundColor: '#fff',
+        backgroundColor:'#D9D9D9',
+      
+       
+
     },
     button: {
         backgroundColor: '#007bff',
