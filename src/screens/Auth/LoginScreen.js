@@ -20,8 +20,8 @@ const LoginScreen = () => {
         // Then navigate to OTP verification screen
         navigation.navigate('OTPVerification');
     }
-    const navigateToSignup = () => {
-        navigation.navigate('Signup');
+    const navigateToSignUp = () => {
+        navigation.navigate('SignUp');
       };
     const SocialLinks = () => {
         const openLinkedin = () => {
@@ -59,7 +59,7 @@ const LoginScreen = () => {
                     style={styles.backgroundImage}
                 >
                     <Header />
-                    <HeaderBackButton onPress={navigateToSignup} />
+                    <HeaderBackButton onPress={navigateToSignUp} />
                     <View style={styles.logowelcomeContainer}>
                         <View style={styles.sobrestuContainer}>
                             <Text style={styles.sob}>SoB</Text>

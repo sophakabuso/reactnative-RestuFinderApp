@@ -11,7 +11,7 @@ import ReservationScreen from '../screens/Reservation/ReservationScreen';
 import ConfirmationScreen from '../screens/Reservation/ConfirmationScreen';
 import UserHistoryScreen from '../screens/User/UserHistoryScreen';
 import ProfileScreen from '../screens/User/ProfileSettingsScreen';
-
+import SignUpScreen from '../screens/Auth/SignUpScreen';
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
@@ -20,7 +20,9 @@ const AppNavigator = () => {
              initialRouteName="Login"
              screenOptions={{ headerShown: false }} 
         >
+            
             <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="SignUp" component={SignUpScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Restaurant" component={RestaurantDetailScreen} />
             <Stack.Screen name="Menu" component={MenuScreen} />
