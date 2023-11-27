@@ -18,11 +18,9 @@ const OTPVerification= () => {
     const onSubmit = data => {
         // Send OTP here...
         // Then navigate to OTP verification screen
-        navigation.navigate('OTPVerification');
+        navigation.navigate('Home');
     }
-    const navigateToSignUp = () => {
-        navigation.navigate('SignUp');
-      };
+    
     const SocialLinks = () => {
         const openLinkedin = () => {
             // Handle LinkedIn link
@@ -36,19 +34,7 @@ const OTPVerification= () => {
             // Handle Instagram link
         };
 
-        return (
-            <View style={styles.socialLinksContainer}>
-                <TouchableOpacity onPress={openLinkedin} style={styles.socialButton}>
-                    <Icon name="linkedin" size={30} color="#0077b5" />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={openTwitter} style={styles.socialButton}>
-                    <Icon name="times" size={30} color="#1da1f2" />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={openInstagram} style={styles.socialButton}>
-                    <Icon name="instagram" size={30} color="#e4405f" />
-                </TouchableOpacity>
-            </View>
-        );
+       
     };
 
     return (
@@ -59,15 +45,15 @@ const OTPVerification= () => {
                     style={styles.backgroundImage}
                 >
                     <Header />
-                    <HeaderBackButton onPress={navigateToSOTPVerification} />
+                    <HeaderBackButton onPress={navigateToHome} />
                     <View style={styles.logowelcomeContainer}>
                         <View style={styles.sobrestuContainer}>
                             <Text style={styles.sob}>SoB</Text>
                             <Text style={styles.restu}> Restaurant </Text>
                         </View>
                         <View style={styles.welcostart}>
-                            <Text style={styles.welcomeback}>Welcome </Text>
-                            <Text style={styles.getstarted}>get started</Text>
+                            <Text style={styles.welcomeback}>Verify Phone </Text>
+                            
                         </View>
                         <Image
                             source={require('../../assets/images/decobarsmall.jpg')}
@@ -85,10 +71,10 @@ const OTPVerification= () => {
         >
           <Text style={styles.buttonText}>SignUp</Text>
         </TouchableOpacity>
-                <Text style={styles.loginText}>With your cell number and password</Text>
+                <Text style={styles.loginText}>Code is sent to +27xx xxx xx44</Text>
                 <TextInput
                     onChangeText={text => setValue('+27XX XXX XXXX', text)}
-                    placeholder="+27XX XXX XXXX"
+                    placeholder="enter code"
                     style={styles.input}
                 />
                 <TextInput

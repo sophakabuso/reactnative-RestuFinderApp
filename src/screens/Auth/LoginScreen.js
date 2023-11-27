@@ -84,7 +84,7 @@ const LoginScreen = () => {
           onPress={handleSubmit(onSubmit)}
         >
           <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>a
+        </TouchableOpacity>
                 <Text style={styles.loginText}>With your cell number and password</Text>
                 <TextInput
                     onChangeText={text => setValue('+27XX XXX XXXX', text)}
@@ -98,6 +98,7 @@ const LoginScreen = () => {
                     style={styles.input}
                     secureTextEntry={true}
                 />
+                
                 <View style={styles.orContainer}>
                     <Image
                         source={require('../../assets/images/decobarsmall.jpg')}
@@ -110,6 +111,13 @@ const LoginScreen = () => {
                     />
                 </View>
                 <SocialLinks />
+
+               <TouchableOpacity
+          style={styles.loginButton}
+          onPress={handleSubmit(onSubmit)}
+        >
+          <Text style={styles.buttonText}>SignUp</Text>
+        </TouchableOpacity>
             </View>
         </View>
     );

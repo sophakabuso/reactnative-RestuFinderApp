@@ -20,6 +20,9 @@ const SignUpScreen = () => {
         // Then navigate to OTP verification screen
         navigation.navigate('OTPVerification');
     }
+    const navigateToOTPVerification = () => {
+        navigation.navigate('OTPVerification');
+    };
     const navigateToSignUp = () => {
         navigation.navigate('SignUp');
       };
@@ -110,7 +113,7 @@ const SignUpScreen = () => {
                         source={require('../../assets/images/decobarsmall.jpg')}
                         style={styles.decobar}
                     />
-                    <Text style={styles.orText}>OR LOGIN WITH</Text>
+                    <Text style={styles.orText}>your are two steps away from your meal</Text>
                     <Image
                         source={require('../../assets/images/decobarsmall.jpg')}
                         style={styles.decobar}
