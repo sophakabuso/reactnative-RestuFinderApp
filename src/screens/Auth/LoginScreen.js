@@ -76,8 +76,14 @@ const LoginScreen = () => {
             </View>
 
             <View style={styles.innerContainer}>
+               
+            <TouchableOpacity
+          style={styles.loginButton}
+          onPress={handleSubmit(onSubmit)}
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>a
                 <Text style={styles.loginText}>With your cell number and password</Text>
-                <Button title="Login" onPress={handleSubmit(onSubmit)} />
                 <TextInput
                     onChangeText={text => setValue('+27XX XXX XXXX', text)}
                     placeholder="+27XX XXX XXXX"
@@ -146,6 +152,13 @@ const styles = StyleSheet.create({
         height: 7.207,
         marginBottom: 10,
     },
+    loginButton: {
+        backgroundColor: '#FFF',
+        padding: 10,
+        borderRadius: 4,
+        marginTop: 10,
+        alignItems: 'center', // Center text horizontally
+      },
     input: {
         borderWidth: 1,
         borderColor: '#ccc',
