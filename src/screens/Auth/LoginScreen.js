@@ -19,8 +19,10 @@ const LoginScreen = () => {
         // Send OTP here...
         // Then navigate to OTP verification screen
         navigation.navigate('OTPVerification');
-    };
-
+    }
+    const navigateToSignup = () => {
+        navigation.navigate('Signup');
+      };
     const SocialLinks = () => {
         const openLinkedin = () => {
             // Handle LinkedIn link
@@ -57,7 +59,7 @@ const LoginScreen = () => {
                     style={styles.backgroundImage}
                 >
                     <Header />
-                    <HeaderBackButton onPress={() => navigation.goBack()} />
+                    <HeaderBackButton onPress={navigateToSignup} />
                     <View style={styles.logowelcomeContainer}>
                         <View style={styles.sobrestuContainer}>
                             <Text style={styles.sob}>SoB</Text>
@@ -158,6 +160,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         marginTop: 10,
         alignItems: 'center', // Center text horizontally
+        width: '100%',
       },
     input: {
         borderWidth: 1,
