@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 import { HeaderBackButton } from '@react-navigation/elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const SignUpScreen = () => {
+const OTPVerification= () => {
     const { register, handleSubmit, setValue } = useForm();
     const navigation = useNavigation();
 
@@ -59,7 +59,7 @@ const SignUpScreen = () => {
                     style={styles.backgroundImage}
                 >
                     <Header />
-                    <HeaderBackButton onPress={navigateToOTPVerification} />
+                    <HeaderBackButton onPress={navigateToSOTPVerification} />
                     <View style={styles.logowelcomeContainer}>
                         <View style={styles.sobrestuContainer}>
                             <Text style={styles.sob}>SoB</Text>
@@ -263,4 +263,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SignUpScreen;
+export default OTPVerification;

@@ -12,6 +12,7 @@ import ConfirmationScreen from '../screens/Reservation/ConfirmationScreen';
 import UserHistoryScreen from '../screens/User/UserHistoryScreen';
 import ProfileScreen from '../screens/User/ProfileSettingsScreen';
 import SignUpScreen from '../screens/Auth/SignUpScreen';
+import OTPVerification from '../screens/Auth/OTPVerification';
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
@@ -23,6 +24,7 @@ const AppNavigator = () => {
             
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="SignUp" component={SignUpScreen} />
+            <Stack.Screen name="OTPVerification" component={OTPVerification} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Restaurant" component={RestaurantDetailScreen} />
             <Stack.Screen name="Menu" component={MenuScreen} />
