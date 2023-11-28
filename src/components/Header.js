@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';  // Import View from react-native
 import NetInfo from "@react-native-community/netinfo";
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 
@@ -70,9 +70,9 @@ const styles = StyleSheet.create({
     },
     iconBattery: {
         marginRight: 10,
-        backgroundColor: 'transparent', // Add any background color you want
-        padding: 5, // Add padding as needed
-        borderRadius: 5, // Add border radius as needed
+        backgroundColor: 'transparent',
+        padding: 5,
+        borderRadius: 5,
     },
     iconWifi: {
         marginRight: 10,

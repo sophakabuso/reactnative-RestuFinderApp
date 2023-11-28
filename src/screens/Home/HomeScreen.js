@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../../components/Header';
@@ -8,10 +8,27 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [isUserRegistered, setIsUserRegistered] = useState(false); // Placeholder state
+  const [hasEffectRun, setHasEffectRun] = useState(false);
 
   const navigateToSignUp = () => {
     navigation.navigate('SignUp');
   };
+
+  const handleSubmit = () => {
+    // Replace this with your actual logic for handling form submission
+    // For example, you might make an API call to check user registration
+    // and update the state accordingly
+    // setIsUserRegistered(true);
+  };
+
+  useEffect(() => {
+    if (!hasEffectRun) {
+      // This will be executed after the component is rendered
+      setHasEffectRun(true);
+      onSubmit();
+    }
+  }, [isUserRegistered, hasEffectRun]);
+
   const onSubmit = () => {
     // Check if the user is registered
     if (isUserRegistered) {
@@ -30,8 +47,9 @@ const HomeScreen = () => {
           source={require('../../assets/images/background.jpg')}
           style={styles.backgroundImage}
         >
-          <Header />
-          <HeaderBackButton onPress={navigateToSignUp} />
+          <Header>
+            <HeaderBackButton onPress={navigateToSignUp} />
+          </Header>
           <View style={styles.logowelcomeContainer}>
             <View style={styles.sobrestuContainer}>
               <Text style={styles.sob}>SoB</Text>
@@ -66,9 +84,9 @@ const HomeScreen = () => {
         />
       </View>
       <View>
-      <TouchableOpacity
+        <TouchableOpacity
           style={styles.loginButton}
-          onPress={handleSubmit(onSubmit)}
+          onPress={() => handleSubmit(onSubmit)}
         >
           <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
@@ -101,7 +119,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20, // Add padding for better spacing
+    padding: 20,
   },
   sobrestuContainer: {
     width: '100%',
@@ -109,13 +127,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 20, // Adjust as needed
+    paddingBottom: 20,
   },
   decobar: {
     width: 33.103,
     height: 7.207,
-    marginTop: 10, // Adjust for better spacing
-    marginBottom: 20, // Adjust for better spacing
+    marginTop: 10,
+    marginBottom: 20,
   },
   sob: {
     color: '#FFF',
@@ -135,7 +153,7 @@ const styles = StyleSheet.create({
   },
   welcostart: {
     flexDirection: 'column',
-    marginTop: 10, // Adjust for better spacing
+    marginTop: 10,
   },
   welcomeback: {
     color: '#FFF',
@@ -178,18 +196,28 @@ const styles = StyleSheet.create({
     backgroundColor: '#0F0101',
   },
   homedish1: {
-    width: 200, // Adjust the width as needed
-    height: 200, // Adjust the height as needed
+    width: 200,
+    height: 200,
     resizeMode: 'cover',
-    marginBottom: 20, // Adjust for better spacing
+    marginBottom: 20,
   },
   homedish2: {
-    width: 100, // Adjust the width as needed
-    height: 10, // Adjust the height as needed
+    width: 100,
+    height: 10,
     resizeMode: 'cover',
-    marginBottom: 20, // Adjust for better spacing
+    marginBottom: 20,
+  },
+  loginButton: {
+    backgroundColor: '#4285F4',
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  buttonText: {
+    color: '#FFF',
+    fontSize: 18,
   },
 });
-
 
 export default HomeScreen;
