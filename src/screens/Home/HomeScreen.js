@@ -65,12 +65,15 @@ const HomeScreen = () => {
                             <Text style={styles.sob}>SoB</Text>
                             <Text style={styles.restu}> Restaurant </Text>
                         </View>
+
                         <View style={styles.welcostart}>
-                            <Text style={styles.welcomeback}>Welcome back </Text>
-                            <Text style={styles.getstarted}>get started</Text>
+                            <Text style={styles.welcomeback}>Dine and wine</Text>
+                            <Text style={styles.getstarted}>with</Text>
+                            <Text style={styles.welcomeback}>Friends and Family</Text>
+                        <Text style={styles.getstarted}>Your Choice </Text>
                         </View>
                         <Image
-                            source={require('../../assets/images/decobarsmall.jpg')}
+                             source={require('../../assets/images/background.jpg')}
                             style={styles.decobar}
                         />
                     </View>
@@ -78,46 +81,18 @@ const HomeScreen = () => {
             </View>
 
             <View style={styles.innerContainer}>
-               
-            <TouchableOpacity
-          style={styles.loginButton}
-          onPress={handleSubmit(onSubmit)}
-        >
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-                <Text style={styles.loginText}>With your cell number and password</Text>
-                <TextInput
-                    onChangeText={text => setValue('+27XX XXX XXXX', text)}
-                    placeholder="+27XX XXX XXXX"
-                    style={styles.input}
-                />
-                <TextInput
-                    onChangeText={text => setValue('password', text)}
-                    placeholder="Password"
-                    keyboardType="phone-pad"
-                    style={styles.input}
-                    secureTextEntry={true}
-                />
-                
-                <View style={styles.orContainer}>
-                    <Image
-                        source={require('../../assets/images/decobarsmall.jpg')}
-                        style={styles.decobar}
-                    />
-                    <Text style={styles.orText}>OR LOGIN WITH</Text>
-                    <Image
-                        source={require('../../assets/images/decobarsmall.jpg')}
-                        style={styles.decobar}
-                    />
-                </View>
-                <SocialLinks />
-
-               <TouchableOpacity
-          style={styles.loginButton}
-          onPress={handleSubmit(onSubmit)}
-        >
-          <Text style={styles.buttonText}>SignUp</Text>
-        </TouchableOpacity>
+            <Image
+                            source={require('../../assets/images/homedish1.png')}
+                            style={styles.homedish1}
+                        />
+             
+            </View>
+            <View>
+            <Image
+                            source={require('../../assets/images/homedish2.png')}
+                            style={styles.homedish2}
+                        />
+             
             </View>
         </View>
     );
