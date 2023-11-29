@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import LoginScreen from '../screens/Auth/LoginScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
+import RestaurantDiscoveryScreen from '../screens/Restaurant/RestaurantDiscoveryScreen';
 import RestaurantDetailScreen from '../screens/Restaurant/RestaurantDetailScreen';
 import MenuScreen from '../screens/Menu/MenuExplorationScreen';
 import ReservationScreen from '../screens/Reservation/ReservationScreen';
@@ -17,7 +18,7 @@ const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Discovery"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Login" component={LoginScreen} />
@@ -47,7 +48,8 @@ const AppNavigator = () => {
           },
         }}
       />
-      <Stack.Screen name="Restaurant" component={RestaurantDetailScreen} />
+      <Stack.Screen name="Discovery" component={RestaurantDiscoveryScreen}/>
+      <Stack.Screen name="Detail" component={RestaurantDetailScreen} />
       <Stack.Screen name="Menu" component={MenuScreen} />
       <Stack.Screen name="Reservation" component={ReservationScreen} />
       <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
