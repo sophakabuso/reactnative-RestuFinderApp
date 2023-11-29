@@ -1,8 +1,9 @@
 
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';  // Import View from react-native
+import { View, Text, StyleSheet } from 'react-native';
 import NetInfo from "@react-native-community/netinfo";
-import Icon from 'react-native-vector-icons/FontAwesome'; 
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Battery } from 'expo-battery';
 
 const Header = () => {
     const [time, setTime] = useState(new Date().toLocaleTimeString());
@@ -16,7 +17,7 @@ const Header = () => {
             const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             setTime(formattedTime);
         }, 1000);
-    
+
         const fetchBatteryLevel = async () => {
             try {
                 const batteryLevel = await Battery.getBatteryLevelAsync();
@@ -48,7 +49,7 @@ const Header = () => {
                 </View>
                 <View style={styles.iconSignalBars}>
                     <Icon name="signal-bars" size={12} color="#900" />
-                </View> 
+                </View>
             </View>
         </View>
     );
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         padding: 5,
         borderRadius: 5,
-        color:'#FFF',
+        color: '#FFF',
     },
     time: {
         color: '#FFF',
