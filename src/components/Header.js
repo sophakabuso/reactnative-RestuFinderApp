@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import NetInfo from "@react-native-community/netinfo";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Battery } from 'expo-battery';
+import { getBatteryLevelAsync, isAvailableAsync } from 'expo-battery';
 
 const Header = () => {
     const [time, setTime] = useState(new Date().toLocaleTimeString());
@@ -20,8 +20,12 @@ const Header = () => {
 
         const fetchBatteryLevel = async () => {
             try {
-                const batteryLevel = await Battery.getBatteryLevelAsync();
-                setBatteryLevel(batteryLevel);
+                if (await isAvailableAsync()) {
+                    const level = await getBatteryLevelAsync();
+                    setBatteryLevel(level);
+                } else {
+                    console.warn('Battery module is not available.');
+                }
             } catch (error) {
                 console.error('Failed to fetch battery level:', error);
             }
