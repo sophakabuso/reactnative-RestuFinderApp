@@ -5,6 +5,8 @@ import Header from '../../components/Header';
 import { HeaderBackButton } from '@react-navigation/elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
+
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [isUserRegistered, setIsUserRegistered] = useState(false); // Placeholder state
