@@ -18,8 +18,8 @@ const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Discovery"
-      screenOptions={{ headerShown: false }}
+      initialRouteName="Detail"
+      screenOptions={{ headerShown: false }}a
     >
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
