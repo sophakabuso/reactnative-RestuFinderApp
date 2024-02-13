@@ -2,6 +2,9 @@
 export const SET_USER = 'SET_USER';
 export const CLEAR_USER = 'CLEAR_USER';
 
+// Auth Actions
+export const SET_AUTH = 'SET_AUTH'; 
+
 // Restaurant Actions
 export const SET_RESTAURANTS = 'SET_RESTAURANTS';
 
